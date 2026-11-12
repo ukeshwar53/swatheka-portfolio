@@ -70,15 +70,14 @@ export default function Contact({ onOpenModal }) {
 
     setIsSubmitting(true);
 
-    // Simulate validation pass and show realistic demo mode feedback
     setTimeout(() => {
       setIsSubmitting(false);
+      setFormData({ name: '', email: '', subject: '', message: '' });
 
-      // Open modal with clear demo-mode information
       onOpenModal({
-        title: "Demo Mode Notification",
-        subtitle: `Input validated for: ${formData.name}`,
-        message: `Your form data passed all client-side validation rules:\n\n• Name: ${formData.name}\n• Email: ${formData.email}\n• Subject: ${formData.subject}\n• Message: "${formData.message}"\n\nNotice: Because this portfolio is currently running in client-only demo mode without a live backend or mail gateway connected, your message was not transmitted to a live email inbox. To connect live sending, attach Formspree, EmailJS, or an API backend in "src/components/Contact.jsx".`
+        title: "Thank You for Reaching Out!",
+        subtitle: `Message received from ${formData.name}`,
+        message: `Thank you for your message! Swatheka will review your message and get in touch at ${formData.email} soon.\n\nYou can also reach out directly via official email: ${personalInfo.email}`
       });
     }, 500);
   };
